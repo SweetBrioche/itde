@@ -88,8 +88,8 @@
                 if ( markerVisible["D"] && markerVisible["F"] ) {
                 this.D.object3D.getWorldPosition(this.p3);
                 this.F.object3D.getWorldPosition(this.p4);
-                let distance = this.p4.distanceTo( this.p3 );
-                this.lineDF.lookAt( this.p3 );
+                let distance = this.p3.distanceTo( this.p4 );
+                this.lineDF.lookAt( this.p4 );
                 this.cylinderDF.scale.set(1,1,distance);
                 this.cylinderDF.visible = true;
                 }
