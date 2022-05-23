@@ -81,7 +81,7 @@ void main()
 	var delta=0;
 	requestAnimationFrame(render);
 	function render(){
-		delta+=1;
+		delta+=0.1;
 		boxmesh.material.uniforms.delta.value=0.5+Math.sin(delta);
 		renderer.render(scene, camera);
 		requestAnimationFrame(render);
