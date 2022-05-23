@@ -15,13 +15,15 @@ void main()
 	gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 }
 </script>
+<!-- Фрагментний шейдер -->
 <script type="x-shader/x-fragment" id="fragmentShader">
+uniform float delta;
 void main()
 	{
-	gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+	gl_FragColor = vec4(5.0, delta + 0.0, 5.0, 0.0);
 	}
 </script>
-<!-- Фрагментний шейдер -->
+
 <script type="text/javascript">
 	/*const _VS = '
 	void main() {
@@ -68,21 +70,19 @@ void main()
 	
 	/*var layer01 = new THREE.TextureLoader().load('lava.jpg');
 	layer01.wrapS = Layer01.wrapT = TREE.RepeatWrapping;*/
-	
+	var customUniforms={
+		delta: (value: 0)
+	};
 	var customMat=new THREE.ShaderMaterial({
-		uniforms: {
-
-		time: { value: 1.0 },
-		resolution: { value: new THREE.Vector2() }
-
-	},
-
-	vertexShader: document.getElementById( 'vertexShader' ).textContent,
-
-	fragmentShader: document.getElementById( 'fragmentShader' ).textContent
+		uniforms: customUniforms,
+		vertexShader: document.getElementById( 'vertexShader' ).textContent,
+		fragmentShader: document.getElementById( 'fragmentShader' ).textContent
 	} );
+	var delta=0;
 	requestAnimationFrame(render);
 	function render(){
+		delta+=1;
+		boxmesh.material.uniforms.delta.value=0.5+Math.sin(delta);
 		renderer.render(scene, camera);
 		requestAnimationFrame(render);
 	}
