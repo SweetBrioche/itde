@@ -78,8 +78,9 @@ void main()
 		vertexShader: document.getElementById('vertexShader').textContent,
 		fragmentShader: document.getElementById('fragmentShader').textContent
 	} );
-	var delta=0;
+	
 	requestAnimationFrame(render);
+	var delta=0;
 	function render(){
 		delta+=0.1;
 		boxmesh.material.uniforms.delta.value=0.5+Math.sin(delta);
