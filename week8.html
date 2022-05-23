@@ -14,7 +14,7 @@ void main()
 </script>
 <!-- Фрагментний шейдер -->
 <script type="x-shader/x-fragment" id="fragmentShader">
-uniform float delta = 0;
+uniform float delta;
 void main()
 	{
 	gl_FragColor = vec4(5.0, delta + 0.0, 5.0, 0.0);
@@ -26,7 +26,7 @@ void main()
 
 
 <script type="text/javascript">
-	var delta=0;
+	
 	var renderer=new THREE.WebGLRenderer({canvas:document.getElementById('Canvas'), antialias: true});
 	renderer.setClearColor(0xCBEFFF);
 	renderer.setPixelRatio(window.devicePixelRatio);
@@ -51,6 +51,15 @@ void main()
 		})*/
 	
 	// користувацький шейдер
+	var customUniforms={
+		delta: {value: 0}
+	};
+	var customMat=new THREE.ShaderMaterial({
+		uniforms: customUniforms,
+		vertexShader: document.getElementById('vertexShader').textContent,
+		fragmentShader: document.getElementById('fragmentShader').textContent
+	} );
+	
 	var boxgeometry=new THREE.BoxBufferGeometry(100, 100, 100, 10, 10, 10);
 	var boxmesh=new THREE.Mesh(boxgeometry, customMat);
 	boxmesh.position.set(-100, 0, -1000);
@@ -63,17 +72,10 @@ void main()
 	
 	/*var layer01 = new THREE.TextureLoader().load('lava.jpg');
 	layer01.wrapS = Layer01.wrapT = TREE.RepeatWrapping;*/
-	var customUniforms={
-		delta: {value: 0}
-	};
-	var customMat=new THREE.ShaderMaterial({
-		uniforms: customUniforms,
-		vertexShader: document.getElementById('vertexShader').textContent,
-		fragmentShader: document.getElementById('fragmentShader').textContent
-	} );
 	
 	
 	
+	var delta=0;
 	function render(){
 		delta+=0.1;
 		boxmesh.material.uniforms.delta.value=0.5+Math.sin(delta);
