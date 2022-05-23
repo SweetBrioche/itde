@@ -12,7 +12,7 @@
 <script type="x-shader/x-vertex" id="vertexShader">
 void main()
 {
- gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+	gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 }
 </script>
 <script type="x-shader/x-fragment" id="fragmentShader">
@@ -23,7 +23,7 @@ void main()
 </script>
 <!-- Фрагментний шейдер -->
 <script type="text/javascript">
-	const _VS = '
+	/*const _VS = '
 	void main() {
 		gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 	}';
@@ -31,7 +31,7 @@ void main()
 	const _FS = '
 	void main() {
 		gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
-	}';
+	}';*/
 	var renderer=new THREE.WebGLRenderer({canvas:document.getElementById('Canvas'), antialias: true});
 	renderer.setClearColor(0xCBEFFF);
 	renderer.setPixelRatio(window.devicePixelRatio);
@@ -46,14 +46,14 @@ void main()
 	var lightTwo=new THREE.PointLight(0xffff, 0.5);
 	scene.add(lightTwo);
 	
-	const s1 = new THREE.Mesh(
+	/*const s1 = new THREE.Mesh(
 		new THREE.SphereGeometry(2, 32, 32),
 		new THREE.ShaderMaterial({
 			uniforms: {},
 			vertexShader: _VS,
 			fragmentShader: _FS,
 		
-		})
+		})*/
 	
 	// користувацький шейдер
 	var boxgeometry=new THREE.BoxBufferGeometry(100, 100, 100, 10, 10, 10);
