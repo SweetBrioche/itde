@@ -14,7 +14,7 @@ void main()
 </script>
 <!-- Фрагментний шейдер -->
 <script type="x-shader/x-fragment" id="fragmentShader">
-uniform float delta;
+uniform float delta = 0;
 void main()
 	{
 	gl_FragColor = vec4(5.0, delta + 0.0, 5.0, 0.0);
