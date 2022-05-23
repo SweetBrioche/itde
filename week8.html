@@ -17,10 +17,10 @@ void main()
 </script>
 <!-- Фрагментний шейдер -->
 <script type="x-shader/x-fragment" id="fragmentShader">
-uniform float delta;
+//uniform float delta;
 void main()
 	{
-	gl_FragColor = vec4(1.0, delta + 0.0, 1.0, 0.0);
+	gl_FragColor = vec4(1.0, 0.0, 1.0, 0.0);
 	}
 </script>
 
@@ -51,11 +51,11 @@ void main()
 		})*/
 	
 	// користувацький шейдер
-	var customUniforms={
+	/*var customUniforms={
 		delta: {value: 0}
-	};
+	};*/
 	var customMat=new THREE.ShaderMaterial({
-		uniforms: customUniforms,
+		//uniforms: customUniforms,
 		vertexShader: document.getElementById('vertexShader').textContent,
 		fragmentShader: document.getElementById('fragmentShader').textContent
 	} );
@@ -75,10 +75,10 @@ void main()
 	
 	
 	
-	var delta=0;
+	//var delta=0;
 	function render(){
-		delta+=0.1;
-		boxmesh.material.uniforms.delta.value=0.5+Math.sin(delta);
+		/*delta+=0.1;
+		boxmesh.material.uniforms.delta.value=0.5+Math.sin(delta);*/
 		renderer.render(scene, camera);
 		requestAnimationFrame(render);
 	}
