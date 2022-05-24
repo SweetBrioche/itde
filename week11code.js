@@ -28,7 +28,7 @@ function init() {
 	scene.add(lightTwo);
 
 	 var objLoader = new THREE.OBJLoader();
-	 objLoader.load("house.obj", function(mesh){
+	 objLoader.load("car.obj", function(mesh){
 			mesh.traverse(function(node){
 				if(node instanceof THREE.Mesh){
 					node.castShadow = true;
