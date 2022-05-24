@@ -36,8 +36,8 @@ function init() {
 				}
 			})
 			scene.add(mesh);
-			mesh.position.set(-150, -150, -250);
-			mesh.rotation.y = Math.PI/4;
+			mesh.position.set(0, -100, -200);
+			mesh.rotation.y = -Math.PI/4;
 
 	});
 
